@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <script src="script.js" defer></script>
+    <title>AdminBoard</title>
+</head>
+<body>
+    <div id="overlay"></div>
+    <section id = "login">
+        <h3>Login</h3>
+        <form action="#" method="get">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div id = "password-div">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <img src="show.png" alt="show password" id="show-password-icon">
+            </div>
+
+            <div id = "login-buttons">
+                <button type="submit" id="login-button">Continue</button>
+            </div>
+        </form>
+    </section>
+    <main id="content">
+         <h1>Welcome to the Admin Dashboard</h1>
+    </main>
+</body>
+</html>

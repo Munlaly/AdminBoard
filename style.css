@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+#overlay{
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#overlay.hidden {
+    opacity: 0;
+    backdrop-filter: none;
+    pointer-events: none;
+}
+
+#login{
+    padding: 10px;
+    border: 3px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    aspect-ratio: 1 / 1;
+    width: clamp(260px, 30svw, 400px);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login.hidden{
+    display: none;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+}
+
+#login form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#login div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+#password-div{
+    position: relative;
+}
+
+#show-password-icon{
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#login form input{
+    border-radius: 6px;
+    height: 1.5rem;
+    padding: 5px;
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+
+}
+
+#password{
+    padding-right: 2rem;
+}
+
+form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+ #login #login-buttons{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-button{
+    border-radius: 6px;
+    width: 80%;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#content {
+    z-index: 1;
+    position: relative;
+    padding: 2rem;
+}
