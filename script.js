@@ -38,5 +38,11 @@ login.querySelector('#show-password-icon').addEventListener('click', () => {
 
 //Page loads
 document.addEventListener('DOMContentLoaded', () => {
-    content.hidden = true;
+    //remove this
+    login.classList.add('hidden');
+    login.hidden = true;
+    overlay.hidden = true;
+
+    
+    //content.hidden = true;
 })

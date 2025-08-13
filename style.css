@@ -8,6 +8,19 @@ body{
     font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
+img{
+    object-fit: contain;
+    height: 100%;
+    width: auto;
+}
+
+.img-container{
+    aspect-ratio: 1 /1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #overlay{
     position: fixed;
     inset: 0;
@@ -28,6 +41,7 @@ body{
 #login{
     padding: 10px;
     border: 3px solid;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,4 +132,64 @@ form input:focus {
     z-index: 1;
     position: relative;
     padding: 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#user .img-container{
+    max-width: 35px;
+}
+
+#odin-logo{
+    max-width: 80px;
+    flex-shrink: 0;
+}
+
+header{
+    padding: 10px 2vw;
+    width: 95svw;
+    max-width: 100svw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+
+    position: fixed;
+    top: 0;
+    left: max(2svw, 25px);
+
+    
+    
+}
+
+#user h1{
+   flex: 1 1 0;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+#user{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+#logout {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
 }
