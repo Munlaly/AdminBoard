@@ -7,6 +7,7 @@
 body{
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     --header-height: 100px;
+    --standard-img-conatiner-size: 35px;
     overflow-x: hidden;
 }
 
@@ -131,18 +132,8 @@ form input:focus {
     font-size: 1rem;
 }
 
-#content {
-    z-index: 1;
-    position: relative;
-    min-height: calc(100svh + var(--header-height));
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: var(--header-height) repeat(3, 1fr) var(--header-height);
-}
-
 #user .img-container{
-    max-width: 35px;
+    max-width: var(--standard-img-conatiner-size);
 }
 
 #odin-logo{
@@ -163,8 +154,9 @@ header{
     position: fixed;
     top: 0;
     left: max(0.5svw, 5px);
+    z-index: 10;
 
-    
+    background: white; 
     
 }
 
@@ -176,6 +168,7 @@ header{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    z-index: 2;
 }
 
 #header-right {
@@ -198,9 +191,34 @@ header{
     transition: color 0.2s;
 }
 
+#content {
+    z-index: 1;
+    position: relative;
+    min-height: calc(100svh + var(--header-height));
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: var(--header-height) repeat(3, 1fr) var(--header-height);
+}
+
 #sidebar{
+    padding: 10px;
     grid-column: 1 / 2;
     grid-row: 2 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.sidebar-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-item .img-container{
+    max-width: var(--standard-img-conatiner-size);
 }
 
 #main-content{
