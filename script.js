@@ -1,12 +1,13 @@
 //Selectors
 const login = document.querySelector('#login');
 const overlay = document.querySelector('#overlay');
-const content = document.querySelector('#content');
 const main = document.querySelector('main');
 const header = document.querySelector('header');
+const droparea = document.querySelector('#droparea');
 
 //Global variables
-let users = [{username: 'Munlaly', password: 'Asd'}];
+const users = [{username: 'Munlaly', password: 'Asd'}];
+const uploadedFiles = [];
 
 
 //Event listeners
@@ -46,4 +47,45 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.add('hidden');
     //main.classList.add('hidden');
     //header.classList.add('hidden');
-})
+
+    //prevent deafuelt behavior for drag and drop events and change dragarea border
+   
+    ['dragenter', 'dragover'].forEach(e =>{
+        droparea.addEventListener(e,dragareaActive);
+        droparea.addEventListener(e, (e) => {e.preventDefault();});
+    });
+
+    ['dragleave', 'drop'].forEach(e => {
+        droparea.addEventListener(e,dragareaInactive);
+        droparea.addEventListener(e, (e) => {e.preventDefault();});
+    });
+
+    droparea.addEventListener("drop", handleDrop);
+});
+
+function dragareaActive() {
+    droparea.style.borderColor = 'green';
+};
+
+function dragareaInactive() {
+    droparea.style.borderColor = 'black';
+};
+
+function handleDrop(e){
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+        const file = files[0];
+        const validTypes = ['image/jpeg', 'image/png'];
+        if (validTypes.includes(file.type)) {
+            uploadedFiles.push(file);
+            console.log('File added:', file);
+        } else {
+            console.log('Invalid file type. Only JPG and PNG are allowed.');
+            alert('Only JPG and PNG files are allowed!');
+        }
+    } else {
+        console.log('No file dropped.');
+    }
+    
+};
