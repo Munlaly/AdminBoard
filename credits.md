@@ -7,3 +7,4 @@
 <a href="https://www.flaticon.com/free-stickers/graphic-tablet" title="graphic tablet stickers">Graphic tablet stickers created by jocularityart - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/rock-paper-scissors" title="rock paper scissors icons">Rock paper scissors icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Talha Dogar - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Freepik - Flaticon</a>
