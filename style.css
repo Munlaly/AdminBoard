@@ -13,6 +13,13 @@ body{
     overflow-x: hidden;
 }
 
+.hidden {
+    display: none !important;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 0;
+}
+
 
 img{
     object-fit: contain;
@@ -60,13 +67,6 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#login.hidden{
-    display: none;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
 }
 
 #login form{
@@ -162,6 +162,13 @@ header{
     
 }
 
+header.hidden{
+    display: none;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+}
+
 #user h1{
    flex: 1 1 0;
     text-align: center;
@@ -202,6 +209,8 @@ main {
     grid-template-columns: 0.2fr 1fr 1fr;
     grid-template-rows: var(--header-height) repeat(3, 1fr) var(--header-height);
 }
+
+
 
 #sidebar{
     padding: 10px;

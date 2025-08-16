@@ -2,6 +2,8 @@
 const login = document.querySelector('#login');
 const overlay = document.querySelector('#overlay');
 const content = document.querySelector('#content');
+const main = document.querySelector('main');
+const header = document.querySelector('header');
 
 //Global variables
 let users = [{username: 'Munlaly', password: 'Asd'}];
@@ -25,6 +27,8 @@ login.querySelector('form').addEventListener('submit', (e) => {
         alert('Successful login!');
         login.classList.add('hidden');
         overlay.classList.add('hidden');
+        main.classList.remove('hidden');
+        header.classList.remove('hidden');
         content.hidden = false;
     }
 });
@@ -38,11 +42,8 @@ login.querySelector('#show-password-icon').addEventListener('click', () => {
 
 //Page loads
 document.addEventListener('DOMContentLoaded', () => {
-    //remove this
     login.classList.add('hidden');
-    login.hidden = true;
-    overlay.hidden = true;
-
-    
-    //content.hidden = true;
+    overlay.classList.add('hidden');
+    //main.classList.add('hidden');
+    //header.classList.add('hidden');
 })
