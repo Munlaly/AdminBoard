@@ -228,6 +228,7 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .sidebar-item .img-container{
@@ -318,6 +319,18 @@ main {
 #droparea .img-container{
     max-height: 100px;
 }
+
+#file::file-selector-button{
+    visibility: hidden;
+}
+
+#file{
+     width: var(--input-width);
+     color: transparent;
+    vertical-align: middle;
+}
+
+
 
 #upload-btn{
     width: calc(var(--input-width) + var(--label-width));

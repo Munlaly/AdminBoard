@@ -135,6 +135,11 @@ function handleDrop(e){
         if (validTypes.includes(file.type)) {
             uploadedFiles.push(file);
             console.log('File added:', file);
+            const fileNameSpan = uploadForm.querySelector('#file-name-span');
+            if (fileNameSpan) fileNameSpan.textContent = file.name;
+            // Set the file input's value to '1' to indicate a file is uploaded
+            const fileInput = document.querySelector('#file');
+            if (fileInput) fileInput.required = false;
         } else {
             console.log('Invalid file type. Only JPG and PNG are allowed.');
             alert('Only JPG and PNG files are allowed!');
@@ -210,6 +215,7 @@ function generateUploadForm(){
         input.name = inputName;
         input.id = inputId;
         if(placeholder) input.placeholder = placeholder;
+        input.required = true;
         item.appendChild(label);
         item.appendChild(input);
         return item;
@@ -217,6 +223,11 @@ function generateUploadForm(){
 
     // Image field
     form.appendChild(createField('Choose the image:', 'file', 'file', 'file', 'Choose file'));
+    const fileNameSpan = document.createElement('span');
+    fileNameSpan.id = 'file-name-span';
+    fileNameSpan.textContent = 'No file chosen';
+    fileNameSpan.style.marginLeft = '10px';
+    form.querySelector('.upload-form-item').appendChild(fileNameSpan);
     // Title field
     form.appendChild(createField('Enter title:', 'text', 'input-title', 'input-title'));
     // Link field
@@ -228,6 +239,65 @@ function generateUploadForm(){
     submitBtn.innerText = 'Upload Project';
     submitBtn.id = 'upload-btn';
     form.appendChild(submitBtn);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const div = document.createElement('div');
+        div.className = 'project-item';
+
+        // Create image container and image
+        const container = document.createElement('div');
+        container.className = 'img-container';
+        const img = document.createElement('img');
+        // Use the last uploaded file (from drag & drop)
+        const file = uploadedFiles[uploadedFiles.length - 1];
+        if (file) {
+            img.src = URL.createObjectURL(file);
+            img.alt = file.name;
+        } else {
+            img.alt = 'No image';
+        }
+        container.appendChild(img);
+        div.appendChild(container);
+
+        const title = form.querySelector('#input-title').value;
+        const link = form.querySelector('#upload-link').value;
+
+        const h3 = document.createElement('h3');
+        h3.innerText = title;
+        div.appendChild(h3);
+        div.addEventListener('click', () => {
+            window.open(link, '_blank');
+        });
+        projectItems.push(div);
+
+        // Reset the form and file name span
+        form.reset();
+        const fileNameSpan = form.querySelector('#file-name-span');
+        if (fileNameSpan) fileNameSpan.textContent = 'No file chosen';
+        // Remove the last uploaded file from the array
+        uploadedFiles.length = 0;
+
+        // Make the form appear as if it reappears (clear and re-append)
+        mainContent.innerHTML = '';
+        mainContent.className = 'upload';
+        mainContent.appendChild(uploadForm);
+        // Re-attach drag-and-drop listeners to #droparea
+        setTimeout(() => {
+            const dropareaEl = document.querySelector('#droparea');
+            if (dropareaEl) {
+                ['dragenter', 'dragover'].forEach(e =>{
+                    dropareaEl.addEventListener(e, dragareaActive);
+                    dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+                });
+                ['dragleave', 'drop'].forEach(e => {
+                    dropareaEl.addEventListener(e, dragareaInactive);
+                    dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+                });
+                dropareaEl.addEventListener("drop", handleDrop);
+            }
+        }, 0);
+    });
     
     uploadForm = form;
 }
