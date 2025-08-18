@@ -127,21 +127,31 @@
                 </div>
                 --->
             <!-- Upload -->
-             <div id="img-drop">
+             <form id="project-form">
                 <div id="droparea">
                     <div class="img-container">
                         <img src="img/icons/file.png" alt="File">
                     </div>
-                    <div id="choose-file">
-                        <input type="file" placeholder="Choose your .jpg or .png file">
-                        <span>or drop it here</span>
-                    </div>
-                    
+                    <p>Drop your .jpg or .png file here!</p>
                 </div>
-             </div>
-                
-            </div>  
-        </div>
+
+                <div class="project-form-item">
+                    <label for="file-input">Choose the image:</label>
+                    <input type="file" id="file-input" name="file-input" placeholder="Choose file">
+                </div>
+
+                <div class="project-form-item">
+                    <label for="input-title">Enter title:</label>
+                    <input type="text" id="input-title" name="input-title">
+                </div>
+
+                <div class="project-form-item">
+                    <label for="input-link">Enter link:</label>
+                    <input type="text" id="input-link" name="input-link">
+                </div>
+
+                <button type="submit" id="upload-btn">Upload</button>
+            </form>
 
         <footer>
             <h1>Ceraeted by Bence</h1>
