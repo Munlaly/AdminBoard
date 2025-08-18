@@ -2,12 +2,17 @@
 const login = document.querySelector('#login');
 const overlay = document.querySelector('#overlay');
 const main = document.querySelector('main');
+const mainContent = document.querySelector('#main-content');
 const header = document.querySelector('header');
-const droparea = document.querySelector('#droparea');
+const sideBar = document.querySelector('#sidebar');
+const contentTitle = document.querySelector('#content-title');
 
 //Global variables
 const users = [{username: 'Munlaly', password: 'Asd'}];
 const uploadedFiles = [];
+const projectItems = [];
+let uploadForm;
+
 
 
 //Event listeners
@@ -41,6 +46,48 @@ login.querySelector('#show-password-icon').addEventListener('click', () => {
 })
 
 
+// Add event listeners to each sidebar item
+sideBar.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        const h3 = item.querySelector('h3');
+        const option = h3.innerText;
+        switch (option) {
+            case 'Projects': {
+                contentTitle.innerHTML = 'Projects';
+                mainContent.innerHTML = '';
+                mainContent.className = 'projects'; 
+                projectItems.forEach(item => {
+                    mainContent.appendChild(item);
+                });
+                break;
+            }
+
+            case 'Upload':{
+                contentTitle.innerHTML = 'Upload';
+                mainContent.innerHTML = '';
+                mainContent.className = 'upload';
+                mainContent.appendChild(uploadForm);
+                // Re-attach drag-and-drop listeners to #droparea
+                setTimeout(() => {
+                    const dropareaEl = document.querySelector('#droparea');
+                    if (dropareaEl) {
+                        ['dragenter', 'dragover'].forEach(e =>{
+                            dropareaEl.addEventListener(e, dragareaActive);
+                            dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+                        });
+                        ['dragleave', 'drop'].forEach(e => {
+                            dropareaEl.addEventListener(e, dragareaInactive);
+                            dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+                        });
+                        dropareaEl.addEventListener("drop", handleDrop);
+                    }
+                }, 0);
+                break;
+            }
+        }
+    });
+});
+
 //Page loads
 document.addEventListener('DOMContentLoaded', () => {
     login.classList.add('hidden');
@@ -48,19 +95,27 @@ document.addEventListener('DOMContentLoaded', () => {
     //main.classList.add('hidden');
     //header.classList.add('hidden');
 
-    //prevent deafuelt behavior for drag and drop events and change dragarea border
-   
-    ['dragenter', 'dragover'].forEach(e =>{
-        droparea.addEventListener(e,dragareaActive);
-        droparea.addEventListener(e, (e) => {e.preventDefault();});
-    });
+    //generate content
+    generateProjectItems();
+    generateUploadForm();
 
-    ['dragleave', 'drop'].forEach(e => {
-        droparea.addEventListener(e,dragareaInactive);
-        droparea.addEventListener(e, (e) => {e.preventDefault();});
-    });
+    // Wait for uploadForm to be generated and attached, then add droparea listeners
+    setTimeout(() => {
+        const dropareaEl = document.querySelector('#droparea');
+        if (dropareaEl) {
+            ['dragenter', 'dragover'].forEach(e =>{
+                dropareaEl.addEventListener(e, dragareaActive);
+                dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+            });
+            ['dragleave', 'drop'].forEach(e => {
+                dropareaEl.addEventListener(e, dragareaInactive);
+                dropareaEl.addEventListener(e, (e) => {e.preventDefault();});
+            });
+            dropareaEl.addEventListener("drop", handleDrop);
+        }
+    }, 0);
 
-    droparea.addEventListener("drop", handleDrop);
+    
 });
 
 function dragareaActive() {
@@ -89,3 +144,90 @@ function handleDrop(e){
     }
     
 };
+
+function generateProjectItems() {
+    fetch('projects.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load projects.json');
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(project => {
+                const item = document.createElement('div');
+                item.className = 'project-item';
+                const container = document.createElement('div');
+                container.className = 'img-container';
+                const img = document.createElement('img');
+                img.src = project.img;
+                img.alt = project.title;
+                img.className = 'project-img';
+                container.appendChild(img);
+                const title = document.createElement('h3');
+                title.textContent = project.title;
+                item.appendChild(container);
+                item.appendChild(title);
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', () => {
+                    window.open(project.link, '_blank');
+                });
+                projectItems.push(item);
+            });
+        })
+        .catch(err => {
+            console.error('Error loading project items:', err);
+        });
+}
+
+function generateUploadForm(){
+    const form = document.createElement('form');
+    form.id = 'upload-form';
+    form.enctype = 'multipart/form-data';
+
+    // Drop area for file upload
+    const droparea = document.createElement('div');
+    droparea.id = 'droparea';
+    const container = document.createElement('div');
+    container.className = 'img-container';
+    const img = document.createElement('img');
+    img.src = 'img/icons/file.png';
+    img.alt = 'File';
+    container.appendChild(img);
+    droparea.appendChild(container);
+    const p = document.createElement('p');
+    p.innerText = 'Drop your .jpg or .png file here!';
+    droparea.appendChild(p);
+    form.appendChild(droparea);
+
+    // Helper to create label/input pairs
+    function createField(labelText, inputType, inputName, inputId, placeholder) {
+        const item = document.createElement('div');
+        item.classList.add('upload-form-item');
+        const label = document.createElement('label');
+        label.htmlFor = inputId;
+        label.innerText = labelText;
+        const input = document.createElement('input');
+        input.type = inputType;
+        input.name = inputName;
+        input.id = inputId;
+        if(placeholder) input.placeholder = placeholder;
+        item.appendChild(label);
+        item.appendChild(input);
+        return item;
+    }
+
+    // Image field
+    form.appendChild(createField('Choose the image:', 'file', 'file', 'file', 'Choose file'));
+    // Title field
+    form.appendChild(createField('Enter title:', 'text', 'input-title', 'input-title'));
+    // Link field
+    form.appendChild(createField('Enter link:', 'url', 'link', 'upload-link'));
+
+    // Submit button
+    const submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.innerText = 'Upload Project';
+    submitBtn.id = 'upload-btn';
+    form.appendChild(submitBtn);
+    
+    uploadForm = form;
+}
