@@ -7,11 +7,12 @@
 body{
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     --header-height: 100px;
-    --standard-img-conatiner-size: 35px;
-    --project-img-conatiner-size: 150px;
+    --standard-img-container-size: 35px;
+    --project-img-container-size: 150px;
     --title-height: 65px;
     --label-width: 200px;
     --input-width: 200px;
+    background: #1F2937;
     overflow-x: hidden;
 }
 
@@ -40,7 +41,11 @@ img{
     position: fixed;
     inset: 0;
     backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.85),   
+    rgba(44, 62, 80, 0.9)       
+    );
     z-index: 0;
     pointer-events: none;
     opacity: 1;
@@ -69,6 +74,8 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    background: linear-gradient(135deg, #3498db, #2c3e50);
 }
 
 #login form{
@@ -77,6 +84,15 @@ img{
     gap: 10px;
     align-items: center;
     justify-content: space-between;
+
+    background-color: transparent;
+    
+}
+
+#login h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
 }
 
 #login div{
@@ -104,12 +120,15 @@ img{
 }
 
 #login form input{
-    border-radius: 6px;
     height: 1.5rem;
     padding: 5px;
     width: 100%;
     flex: 1;
     min-width: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
 
 }
 
@@ -117,9 +136,10 @@ img{
     padding-right: 2rem;
 }
 
-form input:focus {
+#login form input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
 }
 
  #login #login-buttons{
@@ -130,14 +150,29 @@ form input:focus {
 }
 
 #login-button{
-    border-radius: 6px;
     width: 80%;
-    padding: 5px;
+    padding: 12px;
+    background: #3498db;
+    border: none;
+    border-radius: 8px;
+    color: white;
     font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+
+}
+
+#login button:hover {
+  background: #2980b9;
+}
+
+#login button:active {
+  transform: scale(0.97);
 }
 
 #user .img-container{
-    max-width: var(--standard-img-conatiner-size);
+    max-width: var(--standard-img-container-size);
 }
 
 #odin-logo{
@@ -160,7 +195,9 @@ header{
     left: max(0.5svw, 5px);
     z-index: 10;
 
-    background: white; 
+    background: #1F2937; 
+    color:#FFFFFF;
+
     
 }
 
@@ -221,6 +258,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: #111827;
+    color: white;
     
 }
 
@@ -232,7 +271,7 @@ main {
 }
 
 .sidebar-item .img-container{
-    max-width: var(--standard-img-conatiner-size);
+    max-width: var(--standard-img-container-size);
 }
 
 #content{
@@ -241,6 +280,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #F3F4F6;
+    color: white;
 }
 
 #content-title{
@@ -276,7 +317,7 @@ main {
 }
 
 .project-item .img-container{
-    max-width: var(--project-img-conatiner-size);
+    max-width: var(--project-img-container-size);
 }
 
 #upload-form{
@@ -342,4 +383,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background: #1F2937;
+    color: white;
 }

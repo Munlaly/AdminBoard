@@ -35,7 +35,6 @@ login.querySelector('form').addEventListener('submit', (e) => {
         overlay.classList.add('hidden');
         main.classList.remove('hidden');
         header.classList.remove('hidden');
-        content.hidden = false;
     }
 });
 
@@ -119,11 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function dragareaActive() {
-    droparea.style.borderColor = 'green';
+    document.querySelector('#droparea').style.borderColor = 'green';
 };
 
 function dragareaInactive() {
-    droparea.style.borderColor = 'black';
+   document.querySelector('#droparea').style.borderColor = 'black';
 };
 
 function handleDrop(e){
@@ -137,7 +136,6 @@ function handleDrop(e){
             console.log('File added:', file);
             const fileNameSpan = uploadForm.querySelector('#file-name-span');
             if (fileNameSpan) fileNameSpan.textContent = file.name;
-            // Set the file input's value to '1' to indicate a file is uploaded
             const fileInput = document.querySelector('#file');
             if (fileInput) fileInput.required = false;
         } else {
