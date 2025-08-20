@@ -301,6 +301,13 @@ main {
     align-items: center;
     justify-content: center;
     height: var(--title-height);
+
+    font-size: 2rem;          
+    font-weight: 700;         
+    margin-top: 2rem;         
+    margin-bottom: 1rem;      
+    color: #1f2937;          
+    text-align: left;   
 }
 
 #main-content{
@@ -340,6 +347,10 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
+    background: #f0f4f8;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .upload-form-item{
@@ -348,14 +359,28 @@ main {
     justify-content: space-between;
     gap: 10px;
     width: calc(var(--input-width) + var(--label-width));
+
 }
 
 .upload-form-item label{
     width: var(--label-width);
+    font-weight: 500;
+    color: #2c3e50;
 }
 
 .upload-form-item input{
     width: var(--input-width);
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.upload-form-item input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    outline: none;
 }
 
 #droparea{
@@ -364,27 +389,63 @@ main {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 10px;
-    border: 1px solid black;
     width: calc(var(--input-width) + var(--label-width));
+
+    padding: 20px;
+    border: 2px dashed #3b82f6;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e0f2ff, #ffffff);
+    transition: border-color 0.3s, background 0.3s;
+}
+
+#droparea:hover {
+    border-color: #2563eb;
+    background: linear-gradient(135deg, #dbeafe, #f0f9ff);
 }
 
 #droparea .img-container{
     max-height: 100px;
 }
 
-#file::file-selector-button{
+#droparea p {
+    font-size: 0.95rem;
+    color: #1f2937;
+    text-align: center;
+}
+
+#upload-form .upload-form-item #file::file-selector-button{
     visibility: hidden;
 }
 
-#file{
+#upload-form .upload-form-item #file{
      width: var(--input-width);
      color: transparent;
     vertical-align: middle;
+    display: none;
+}
+
+#file-name-span {
+    font-size: 0.9rem;
+    color: #374151;
 }
 
 #upload-btn{
     width: calc(var(--input-width) + var(--label-width));
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#upload-btn:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .info{
