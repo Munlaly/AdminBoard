@@ -13,6 +13,7 @@ const users = [{username: 'Munlaly', password: 'Asd'}];
 const uploadedFiles = [];
 const projectItems = [];
 let uploadForm;
+let info;
 
 
 
@@ -56,7 +57,7 @@ sideBar.querySelectorAll('.sidebar-item').forEach(item => {
         const option = h3.innerText;
         switch (option) {
             case 'Projects': {
-                contentTitle.innerHTML = 'Projects';
+                contentTitle.innerText = 'Projects';
                 mainContent.innerHTML = '';
                 mainContent.className = 'projects'; 
                 projectItems.forEach(item => {
@@ -66,7 +67,7 @@ sideBar.querySelectorAll('.sidebar-item').forEach(item => {
             }
 
             case 'Upload':{
-                contentTitle.innerHTML = 'Upload';
+                contentTitle.innerText = 'Upload';
                 mainContent.innerHTML = '';
                 mainContent.className = 'upload';
                 mainContent.appendChild(uploadForm);
@@ -101,6 +102,14 @@ sideBar.querySelectorAll('.sidebar-item').forEach(item => {
                 window.open(mailto, '_blank');
                 break;
             }
+
+            case 'Info':{
+                contentTitle.innerText = 'Info';
+                mainContent.innerHTML = '';
+                mainContent.className = 'info';
+                mainContent.appendChild(info);
+                break;
+            }
         }
     });
 });
@@ -115,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //generate content
     generateProjectItems();
     generateUploadForm();
+    generateInfo();
 
     // Wait for uploadForm to be generated and attached, then add droparea listeners
     setTimeout(() => {
@@ -316,4 +326,17 @@ function generateUploadForm(){
     });
     
     uploadForm = form;
+}
+
+function generateInfo(){
+    const wrapper = document.createElement('div');
+    wrapper.id = 'info-wrapper';
+    const p1 = document.createElement('p');
+    p1.innerText = 'I\'m Bence from Transylvania. I\'m currently studying at Sapienta Transylvainan Hunagarian University and I\'m doing the Odin Project to become a better web developper.'
+    wrapper.appendChild(p1);
+    const p2 = document.createElement('p');
+    p2.innerText = 'I absolutely love programming, thus I want to be a software developper after I finish the university.'
+    wrapper.appendChild(p2);
+
+    info = wrapper;
 }
