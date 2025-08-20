@@ -5,6 +5,7 @@ const main = document.querySelector('main');
 const mainContent = document.querySelector('#main-content');
 const header = document.querySelector('header');
 const sideBar = document.querySelector('#sidebar');
+const logout = document.querySelector('#logout');
 const contentTitle = document.querySelector('#content-title');
 
 //Global variables
@@ -44,6 +45,9 @@ login.querySelector('#show-password-icon').addEventListener('click', () => {
     else passwordField.type = 'password';
 })
 
+logout.addEventListener('click', () => {
+    location.reload();
+})
 
 // Add event listeners to each sidebar item
 sideBar.querySelectorAll('.sidebar-item').forEach(item => {
@@ -81,6 +85,20 @@ sideBar.querySelectorAll('.sidebar-item').forEach(item => {
                         dropareaEl.addEventListener("drop", handleDrop);
                     }
                 }, 0);
+                break;
+            }
+
+            case 'Github':{
+                window.open('https://github.com/Munlaly', '_blank');
+                break;
+            }
+
+            case 'Contact':{
+                const email = 'nemetdbence@gmail.com';
+                const subject = 'Mail from admin site';
+                const body = 'I would like to get in touch.';
+                const mailto = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(mailto, '_blank');
                 break;
             }
         }

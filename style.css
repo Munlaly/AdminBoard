@@ -294,7 +294,6 @@ main {
     flex-direction: column;
     align-items: center;
     background: #F3F4F6;
-    color: white;
 }
 
 #content-title{
@@ -383,8 +382,6 @@ main {
      color: transparent;
     vertical-align: middle;
 }
-
-
 
 #upload-btn{
     width: calc(var(--input-width) + var(--label-width));
