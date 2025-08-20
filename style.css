@@ -208,7 +208,7 @@ header.hidden{
     opacity: 0;
 }
 
-#user h1{
+#header h1{
    flex: 1 1 0;
     text-align: center;
     font-size: 1.5rem;
@@ -230,14 +230,20 @@ header.hidden{
     display: flex;
     align-items: center;
     gap: 8px;
-
+    color: #E5E7EB;
 }
 
 #logout {
     cursor: pointer;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
+
+#logout:hover{
+    transform: translateX(5px); 
+    color: #FFFFFF;
+}
+
 
 main {
     z-index: 1;
@@ -259,7 +265,6 @@ main {
     flex-direction: column;
     justify-content: space-between;
     background: #111827;
-    color: white;
     
 }
 
@@ -268,6 +273,14 @@ main {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    color: #E5E7EB;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar-item:hover {
+    background-color: #1F2937;
+    transform: translateX(5px); 
+    color: #FFFFFF;
 }
 
 .sidebar-item .img-container{
