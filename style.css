@@ -14,7 +14,7 @@ body{
     --input-width: 200px;
     --small-input-width: 130px;
     --small-label-width: 130px;
-    --small-header-height: 130px;
+    --small-header-height: calc(70px + var(--standard-img-container-size) + 0.1rem + 24px  );
     --small-project-img-conatainer-size: 100px;
     background: #1F2937;
     overflow-x: hidden;
@@ -492,6 +492,7 @@ footer{
         justify-content: space-between;
         padding: 0 1rem;
         z-index: 1000;
+
     }
 
     #odin-logo{
@@ -540,7 +541,7 @@ footer{
     }
 
     main{
-        margin-top: 20px;
+        margin-top: var(--small-header-height);
         min-height: calc(100svh + var(--small-header-height));
         padding-top: 25px;
 
