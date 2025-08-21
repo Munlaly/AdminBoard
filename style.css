@@ -12,9 +12,10 @@ body{
     --title-height: 65px;
     --label-width: 200px;
     --input-width: 200px;
-    --small-input-width: 150px;
-    --small-label-width: 150px;
+    --small-input-width: 130px;
+    --small-label-width: 130px;
     --small-header-height: 130px;
+    --small-project-img-conatainer-size: 100px;
     background: #1F2937;
     overflow-x: hidden;
 }
@@ -438,7 +439,7 @@ main {
 
 #upload-btn{
     width: calc(var(--input-width) + var(--label-width));
-    padding: 10px 0;
+    padding: 10px 10px;
     border: none;
     border-radius: 8px;
     background: #3b82f6;
@@ -562,5 +563,15 @@ footer{
 
     #upload-btn{
        width: clac(var(--small-input-width) + var(--small-label-width)); 
+    }
+
+    #main-content.projects{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .project-item .img-container{
+        max-width: var(--small-project-img-conatainer-size);
     }
 }
