@@ -267,6 +267,7 @@ function generateUploadForm(){
     form.appendChild(submitBtn);
 
     form.addEventListener('submit', (e) => {
+        
         e.preventDefault();
         const div = document.createElement('div');
         div.className = 'project-item';

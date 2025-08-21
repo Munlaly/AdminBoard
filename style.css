@@ -558,11 +558,11 @@ footer{
     }
 
     #droparea{
-        width: clac(var(--small-input-width) + var(--small-label-width));
+        width: calc(var(--small-input-width) + var(--small-label-width));
     }
 
     #upload-btn{
-       width: clac(var(--small-input-width) + var(--small-label-width)); 
+       width: calc(var(--small-input-width) + var(--small-label-width)); 
     }
 
     #main-content.projects{
