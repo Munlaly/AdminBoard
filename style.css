@@ -540,6 +540,7 @@ footer{
     }
 
     main{
+        margin-top: 20px;
         min-height: calc(100svh + var(--small-header-height));
         padding-top: 25px;
 
