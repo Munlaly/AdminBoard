@@ -486,7 +486,7 @@ footer{
         top: 0;
         left: 0;
         width: 100%;
-        height: var(--small-header-height);
+        height: fit-content;
         display: flex;
         align-items: center;
         justify-content: space-between;
