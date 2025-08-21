@@ -116,10 +116,10 @@ sideBar.querySelectorAll('.sidebar-item').forEach(item => {
 
 //Page loads
 document.addEventListener('DOMContentLoaded', () => {
-    login.classList.add('hidden');
-    overlay.classList.add('hidden');
-    //main.classList.add('hidden');
-    //header.classList.add('hidden');
+    //login.classList.add('hidden');
+    //overlay.classList.add('hidden');
+    main.classList.add('hidden');
+    header.classList.add('hidden');
 
     //generate content
     generateProjectItems();
