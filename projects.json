@@ -18,5 +18,10 @@
     "img": "img/projects/rock-paper-scissors.png",
     "title": "Rock Paper Scissors",
     "link": "https://htmlpreview.github.io/?https://github.com/Munlaly/Rock_Paper_Scissor/blob/master/index.html"
+  },
+  {
+    "img": "img/projects/library.png",
+    "title": "Library",
+    "link": "https://htmlpreview.github.io/?https://github.com/Munlaly/Library/blob/master/index.html"
   }
 ]
