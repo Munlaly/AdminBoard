@@ -10,3 +10,4 @@
 <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/folder" title="folder icons">Folder icons created by kmg design - Flaticon</a>
 <a href="https://www.flaticon.com/free-stickers/study" title="study stickers">Study stickers created by Stickers - Flaticon</a>
+<a href="https://www.flaticon.com/free-stickers/tic-tac-toe" title="tic tac toe stickers">Tic tac toe stickers created by Stickers - Flaticon</a>

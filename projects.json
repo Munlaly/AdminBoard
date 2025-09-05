@@ -23,5 +23,10 @@
     "img": "img/projects/library.png",
     "title": "Library",
     "link": "https://htmlpreview.github.io/?https://github.com/Munlaly/Library/blob/master/index.html"
+  },
+  {
+    "img": "img/projects/tic-tac-toe.png",
+    "title": "Tic Tac Toe",
+    "link": "https://htmlpreview.github.io/?https://github.com/Munlaly/TicTacToe/blob/master/index.html"
   }
 ]
